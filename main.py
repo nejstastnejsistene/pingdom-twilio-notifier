@@ -8,8 +8,8 @@ from twilio.rest import TwilioRestClient
 app = Flask('pingdom-twilio-notifier')
 
 client = TwilioRestClient()
-twilio_phone_num = os.getenv('TWILIO_PHONE_NUM')
-password = os.getenv('PASSWORD', '')
+twilio_phone_num = os.environ['TWILIO_PHONE_NUM']
+password = os.environ['PASSWORD']
 
 @app.route('/'+password+'/<phone_num>')
 def notify(phone_num):
