@@ -19,10 +19,12 @@ def notify(phone_num):
   except ValueError:
     return 'expecting message query param to be valid json', 400, content_type
   try:
-    action, description = message['action'], message['description']
-    body = '[Pingdom] action={!r} description={!r}'.format(action, description)
+    checkname = message['checkname']
+    host = message['host']
+    description = message['description']
+    body = '[Pingdom] {}: {} is {}.'.format(checkname, host, description)
   except KeyError:
-    return 'expecting action and description keys', 400, content_type
+    return 'expecting checkname, host, and description keys', 400, content_type
   client.messages.create(to=phone_num, from_=twilio_phone_num, body=body)
   return '', 200, content_type
 
