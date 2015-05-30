@@ -38,4 +38,5 @@ In your user settings, click "Add Contact Method", select "Webhook/URL", and set
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
+export DEBUG=1 # optional
 ```
